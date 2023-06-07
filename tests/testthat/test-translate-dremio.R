@@ -434,6 +434,4 @@ test_that("translate sql server -> Dremio cast varchar and concat", {
   expect_equal_ignore_spaces(sql, "select cast('test' as VARCHAR(10)) || 'ing'")
 })
 
-# TODO check java impl for Snowflake and Spark again
-
 # rJava::J('org.ohdsi.sql.SqlTranslate')$setReplacementPatterns('inst/csv/replacementPatterns.csv')

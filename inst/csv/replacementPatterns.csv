@@ -1415,7 +1415,7 @@ dremio,"IF OBJECT_ID('@table', 'U') IS NULL CREATE TABLE @table (@definition);",
 dremio,"IF OBJECT_ID('@table', 'U') IS NOT NULL DROP TABLE @table;",DROP TABLE IF EXISTS @table;
 dremio,"IF OBJECT_ID('tempdb..#@table', 'U') IS NOT NULL DROP TABLE #@table;",DROP TABLE IF EXISTS @table;
 dremio,.dbo.,.
-dremio,CREATE TABLE #@table (@definition),CREATE TEMP TABLE #@table (@definition)
+dremio,CREATE TABLE #@table (@definition),CREATE TABLE @table (@definition)
 dremio,CREATE CLUSTERED INDEX @index_name ON @table (@variable);,-- dremio does not support indexes
 dremio,CREATE INDEX @index_name ON @table (@variable);,-- dremio does not support indexes
 dremio,CREATE INDEX @index_name ON @table (@variable) WHERE @c;,-- dremio does not support indexes
@@ -1428,7 +1428,7 @@ dremio,WITH @a INSERT INTO @b SELECT @c;,INSERT INTO @b WITH @a SELECT @c;
 dremio,SELECT @a INTO #@b FROM @c;,CREATE TABLE #@b\nAS\nSELECT\n@a\nFROM\n@c;
 dremio,SELECT @a INTO @b FROM @c;,CREATE TABLE @b AS\nSELECT\n@a\nFROM\n@c;
 dremio,SELECT @a INTO @b;,CREATE TABLE @b AS\nSELECT\n@a;
-dremio,SELECT @a INTO #@b;,CREATE TEMP TABLE #@b AS\nSELECT\n@a;
+dremio,SELECT @a INTO #@b;,CREATE TABLE @b AS\nSELECT\n@a;
 dremio,SELECT TOP @([0-9]+)rows @a;,SELECT @a LIMIT @rows;
 dremio,(SELECT TOP @([0-9]+)rows @a),(SELECT @a LIMIT @rows)
 dremio,SELECT DISTINCT TOP @([0-9]+)rows @a;,SELECT DISTINCT @a LIMIT @rows;
@@ -1454,3 +1454,4 @@ dremio,DATETIME,TIMESTAMP
 dremio,DATETIME2,TIMESTAMP
 dremio,"CONSTRAINT @a DEFAULT NOW()",""
 dremio,"DEFAULT NOW()",""
+dremio,"AS COUNT","AS \"COUNT\""
