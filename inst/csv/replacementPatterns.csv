@@ -1415,7 +1415,6 @@ dremio,"IF OBJECT_ID('@table', 'U') IS NULL CREATE TABLE @table (@definition);",
 dremio,"IF OBJECT_ID('@table', 'U') IS NOT NULL DROP TABLE @table;",DROP TABLE IF EXISTS @table;
 dremio,"IF OBJECT_ID('tempdb..#@table', 'U') IS NOT NULL DROP TABLE #@table;",DROP TABLE IF EXISTS @table;
 dremio,.dbo.,.
-dremio,CREATE TABLE #@table (@definition),CREATE TABLE @table (@definition)
 dremio,CREATE CLUSTERED INDEX @index_name ON @table (@variable);,-- dremio does not support indexes
 dremio,CREATE INDEX @index_name ON @table (@variable);,-- dremio does not support indexes
 dremio,CREATE INDEX @index_name ON @table (@variable) WHERE @c;,-- dremio does not support indexes
@@ -1455,3 +1454,9 @@ dremio,DATETIME2,TIMESTAMP
 dremio,"CONSTRAINT @a DEFAULT NOW()",""
 dremio,"DEFAULT NOW()",""
 dremio,"AS COUNT","AS \"COUNT\""
+dremio,"AS VALUE","AS \"VALUE\""
+dremio,",COUNT",",\"COUNT\""
+dremio,",VALUE",",\"VALUE\""
+dremio,"COUNT,","\"COUNT\","
+dremio,"VALUE,","\"VALUE\","
+dremio,".METADATA",".\"METADATA\""

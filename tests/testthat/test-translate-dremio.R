@@ -434,4 +434,13 @@ test_that("translate sql server -> Dremio cast varchar and concat", {
   expect_equal_ignore_spaces(sql, "select cast('test' as VARCHAR(10)) || 'ing'")
 })
 
+# 
+# test_that("translate sql server -> Dremio temp", {
+#   sql <- translate("CREATE TABLE #temp  (speed DOUBLE, dist DOUBLE)",
+#                    targetDialect = "dremio"
+#   )
+#   expect_equal_ignore_spaces(sql, "CREATE TABLE abc  (speed DOUBLE, dist DOUBLE)")
+# })
+
+
 # rJava::J('org.ohdsi.sql.SqlTranslate')$setReplacementPatterns('inst/csv/replacementPatterns.csv')
